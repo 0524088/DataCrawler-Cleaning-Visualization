@@ -27,6 +27,9 @@
 - 近期資料分析圖
 - 熱門標的分析圖
 
+### 系統功能
+![image](https://github.com/0524088/DataCrawler-Cleaning-Visualization/assets/43835584/b62fc590-8690-44cf-bcad-501f1fef41af)
+
 ## 專案影片DEMO展示
 https://www.youtube.com/watch?v=jxuEEPHJDVc&ab_channel=DLD
 
