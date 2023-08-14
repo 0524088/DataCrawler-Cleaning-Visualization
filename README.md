@@ -9,13 +9,13 @@
 主要分為資料蒐集、資料清理以及資料呈現<br>
 資料蒐集：使用Python的Selenium和BeautifulSoup套件進行爬蟲然後再存進資料庫。<br>
 資料清理：透過SQL預存程序對爬蟲資料進行清理以及格式化，並另外計算分析相對市占率和成長率等資料。<br>
-資料呈現：透過WEB來呈現，後端使用PHP配合前端Jquery的Ajax來達到SPA查詢；使用Gapminder Tools工具來進行動態圖表的繪製，並另外使用Highcharts.js套件來呈現靜態資料視覺化<br>
+資料呈現：透過WEB來呈現，後端使用PHP配合前端jQuery的Ajax來達到SPA查詢；使用Gapminder Tools工具來進行動態圖表的繪製，並另外使用Highcharts.js套件來呈現靜態資料視覺化<br>
 - Python-Selenium
 - Python-BeautifulSoup
 - SQL Server(MSSQL)
 - HTML+CSS
 - PHP 7.4
-- jQuery/Ajax
+- jQuery
 - Highcharts.js
 - Gapminder Tools
 
@@ -27,7 +27,7 @@
 - 近期資料分析圖
 - 熱門標的分析圖
 
-### 專案影片DEMO展示
+## 專案影片DEMO展示
 https://www.youtube.com/watch?v=UiK0-f-Ekcg&ab_channel=%E9%9B%BB%E5%AE%B9%E7%88%86%E7%82%B8
 
 ## 製作過程與困難點
