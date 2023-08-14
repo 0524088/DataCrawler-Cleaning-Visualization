@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>透過投信投資組合之動態分析進行投資決策之研究</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap-4.0.0.css" rel="stylesheet">
+<link href="css/css.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="bg">
+  <h3 id="header">透過投信投資組合之動態分析進行投資決策之研究</h3>
+</div>
+<nav class="dropdown navbar navbar-expand-lg col-xl-12 bg-light" >
+    <ul class="drop-down-menu navbar-nav mr-auto  rdiv"	>
+      <li class="nav-item active"> <a class="nav-link" href="./index.php">首頁 <span class="sr-only">(current)</span></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="#"></a> </li>
+      <li class="nav-item active"> <a class="nav-link">查詢</a> 
+        <ul>
+          <li> <a class=" layer" href="form.php">清單式查詢</a></li>
+          <li> <a class=" layer" href="chartForm.php">個股圖表查詢</a></li>
+          <li> <a class=" layer" href="compareChart.php">比較圖表查詢</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"> <a class="nav-link" href="#"></a> </li>
+      <li class="nav-item active"> <a class="nav-link">動態圖</a>
+        <ul>
+          <li class="nav-item"> <a class="nav-link">全部標的 </a>
+            <ul>
+              <li> <a class=" layer" href="./bubble.html">氣泡圖</a> </li>
+              <li> <a class=" layer" href="./bar.html">階層圖</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"> <a class="nav-link" href="#"></a> </li>
+          <li class="nav-item dropdown"> <a class="nav-link">熱門標的</a>
+            <ul>
+              <li> <a class=" layer" href="./hot_line/line.html">折線圖</a> </li>
+              <li> <a class=" layer" href="./hot_rank/rank.html">階層圖</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item"> <a class="nav-link" href="#"></a> </li>
+      <li class="nav-item active"> <a class="nav-link active" href="./about.html">關於</a> </li>
+    </ul>
+</nav>
+&nbsp;
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="js/jquery-3.2.1.min.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="js/popper.min.js"></script> 
+<script src="js/bootstrap-4.0.0.js"></script> 
+<!-- <script type="text/javascript" src="js/test.js"></script>--> 
+<script type="text/javascript">
+$(function() {
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 100)  {          /* 要滑動到選單的距離 */
+       $('.dropdown').addClass('navFixed');   /* 幫選單加上固定效果 */
+    } else {
+      $('.dropdown').removeClass('navFixed'); /* 移除選單固定效果 */
+    }
+  });
+});
+</script>
+<div class="container">
+	<hr>
+		 <div class="row">
+        <div class="col-6">
+          <h3>關於本站</h3>
+			 </div>
+      </div>
+      <hr>
+	<p>本站以基金投資面向來作為股票投資的參考,投資人能透過查詢並篩選條件來選擇想看的歷年資料,本網站也有提供圖表模式,可利用氣泡圖與階層圖來觀察全部個股之走向,本網站特別利用BCG矩陣,根據各年的平均成長率與平均市占率,分成明星、金牛、問號及瘦狗四種顏色,讓整體資料看起來更具視覺化。本網站另有提供熱門標的圖表,利用折現圖及階層圖更能看出歷年熱門股票的走向,搭配其他股票分析網站,更有相輔相成的效果,期盼能提供投資人多一項投資的參考依據。</p>
+	<hr>
+		 <div class="row">
+        <div class="col-6">
+          <h3>相關連結</h3>
+			 </div>
+      </div>
+      <hr>
+		<li><a href="https://www.sitca.org.tw">中華民國證券投資信託暨顧問商業同業公會</a></li>
+		<hr>
+      <div class="row">
+        <div class="col-6">
+          <h3>關於我們</h3>
+        </div>
+</div>
+      <hr>
+      <div class="row">
+		   <div class="col-md-4 col-sm-12">
+          <div class="row justify-content-md-around m-1">
+            <address>
+              <strong>指導教授 :曾守正</strong><br>
+              國立高雄科技大學<br>
+               資訊管理系<br>
+              <a href="mailto:#">imfrank@nkfust.edu.tw</a>
+            </address>
+          </div>
+        </div>
+		  <div class="col-md-4 col-sm-12">
+          <div class="row justify-content-md-around m-1">
+            <address>
+              <strong>蔡宗益</strong><br>
+              國立高雄科技大學<br>
+               資訊管理系<br>
+              <a href="mailto:#">0524088@nkust.edu.tw</a>
+            </address>
+          </div>
+        </div>
+      <div class="col-md-4 col-sm-12">
+          <div class="row justify-content-md-around m-1">
+            <address>
+              <strong>陳品伸</strong><br>
+              國立高雄科技大學<br>
+               資訊管理系<br>
+              <a href="mailto:#">0524070@nkust.edu.tw</a>
+            </address>
+          </div>
+        </div>
+      </div>
+ <hr>
+      <div class="row">
+        <div class="col-6">
+          <h3>免責聲明</h3>
+        </div>
+        <div class="col-6">
+          
+        </div>
+      </div>
+      <hr>
+	  <div class="row">
+	    <ul>
+	      <li>1.本網站資料來源取自SITCA(www.sitca.org.tw),作為教學及研究目的使用,未經允許請勿作為營利使用。</li>
+			<li>2.本網站對於任何使用或引用本網站網頁資料引致之損失或損害，概不負責。本網站亦有權隨時刪除、暫停或編輯本網站所登載之各項資料，以維護本網站之權益。</li>
+			<li>3.本網站依現有設備及人力盡力做好網頁管理安全，但並無法保證網頁之絕對安全性或絕無瑕疵、失誤、病毒或其它惡意之程式（包括被其他暨第三人者惡意植入）。</li>
+        </ul>
+</div>
+		<hr>
+<footer class="text-center">
+    <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+</body>
+</html>

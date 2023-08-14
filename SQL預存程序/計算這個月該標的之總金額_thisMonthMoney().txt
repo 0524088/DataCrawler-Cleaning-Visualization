@@ -1,0 +1,29 @@
+USE [fund]
+GO
+/****** Object:  StoredProcedure [dbo].[thisMonthMoney]    Script Date: 2019/5/31 下午 03:59:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+--該月份標的總金額之方法
+ALTER proc  [dbo].[thisMonthMoney] ( @time char(7),@subjectName nvarchar(50))as
+
+declare  @Subject_Price money=0
+declare  @price money=0
+declare X cursor
+for select price from fund_schedule_BCGcompute--table
+where time=@time and subjectName=@subjectName
+open X
+FETCH NEXT FROM X
+INTO @price
+
+while (@@fetch_status = 0)
+begin
+	--加總標的總金額
+	select @Subject_Price=@Subject_Price+@price
+	FETCH NEXT FROM X
+	INTO @price
+end
+close X
+deallocate X
+return @Subject_Price

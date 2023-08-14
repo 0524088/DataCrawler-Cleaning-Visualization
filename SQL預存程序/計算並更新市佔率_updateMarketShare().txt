@@ -1,0 +1,46 @@
+USE [fund]
+GO
+/****** Object:  StoredProcedure [dbo].[updateMarketShare]    Script Date: 2019/5/31 下午 03:59:08 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+--計算市佔率之方法
+ALTER proc  [dbo].[updateMarketShare] as
+declare  @time nvarchar(10)
+declare  @price money=0
+declare  @subjectPrice money=0
+declare  @totalPrice money=0
+declare  @marketShare float=0
+declare @subjectName nvarchar(50)
+declare Y cursor
+for  select subjectName,price,time from fund_schedule_BCGcompute--table
+open Y
+FETCH NEXT FROM Y
+INTO @subjectName,@price ,@time
+while (@@fetch_status = 0)
+begin
+	--該月總金額
+	EXEC @totalPrice = totalPricePerMonth @time
+		print @time+'\n該月總金額：'+cast(@totalPrice as char(50))
+	--該月標的總金額
+	EXEC @subjectPrice = thisMonthMoney @time ,@subjectName
+		print @time+'\n該月'+@subjectName+'的總金額：'+cast(@subjectPrice as char(50))
+	--計算市占率(標的總金額/所有標的總金額)
+	select @marketShare=@subjectPrice /@totalPrice
+	print '市佔率'+cast(@marketShare as char(10))
+	--填入資料
+	update fund_schedule_BCGcompute--table
+	set marketShare=@marketShare
+	where price=@price and time=@time and subjectName=@subjectName
+
+
+	FETCH NEXT FROM Y
+	INTO @subjectName,@price ,@time
+end
+close Y
+deallocate Y
+
+
+
+

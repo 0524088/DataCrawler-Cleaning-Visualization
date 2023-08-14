@@ -1,0 +1,112 @@
+<!--全部標的氣泡圖-->
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>透過投信投資組合之動態分析進行投資決策之研究</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
+    <link href="css/css.css" rel="stylesheet" type="text/css">
+
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <link href="libs/vizabi.css" rel="stylesheet" type="text/css">
+    <link href="libs/bubblechart.css" rel="stylesheet" type="text/css">
+    <link href="libs/bubblemap.css" rel="stylesheet" type="text/css">
+    <link href="libs/mountainchart.css" rel="stylesheet" type="text/css">
+    <link href="libs/barrankchart.css" rel="stylesheet" type="text/css">
+    <link href="libs/linechart.css" rel="stylesheet" type="text/css">
+
+    <script src="libs/vizabi.js"></script>
+    <script src="libs/bubblechart.js"></script>
+    <script src="libs/bubblemap.js"></script>
+    <script src="libs/mountainchart.js"></script>
+    <script src="libs/barrankchart.js"></script>
+    <script src="libs/linechart.js"></script>
+    <script src="libs/vizabi-ddfcsv-reader.js"></script>
+    <script src="libs/vizabi-csv-reader.js"></script>
+    <script src="libs/vizabi-excel-reader.js"></script>
+</head>
+
+<body>
+    <div id="bg">
+        <h3 id="header">透過投信投資組合之動態分析進行投資決策之研究</h3>
+    </div>
+    <nav class="dropdown navbar navbar-expand-lg col-xl-12 bg-light">
+        <ul class="drop-down-menu navbar-nav mr-auto  rdiv">
+            <li class="nav-item active"> <a class="nav-link" href="./index.php">首頁 <span class="sr-only">(current)</span></a> </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item active"> <a class="nav-link">查詢</a> 
+              <ul>
+                <li> <a class=" layer" href="form.php">清單式查詢</a></li>
+                <li> <a class=" layer" href="chartForm.php">個股圖表查詢</a></li>
+                <li> <a class=" layer" href="compareChart.php">比較圖表查詢</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item active"> <a class="nav-link">動態圖</a>
+                <ul>
+                    <li class="nav-item"> <a class="nav-link">全部標的 </a>
+                        <ul>
+                            <li> <a class=" layer" href="./bubble.html">氣泡圖</a> </li>
+                            <li> <a class=" layer" href="./bar.html">階層圖</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"></a>
+                    </li>
+                    <li class="nav-item dropdown"> <a class="nav-link">熱門標的</a>
+                        <ul>
+                            <li> <a class=" layer" href="./hot_line/line.html">折線圖</a> </li>
+                            <li> <a class=" layer" href="./hot_rank/rank.html">階層圖</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item active"> <a class="nav-link active" href="./about.html">關於</a> </li>
+        </ul>
+    </nav>
+    &nbsp;
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.0.0.js"></script>
+    <!-- <script type="text/javascript" src="js/test.js"></script>-->
+    <script type="text/javascript">
+        $(function() {
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) { /* 要滑動到選單的距離 */
+                    $('.dropdown').addClass('navFixed'); /* 幫選單加上固定效果 */
+                } else {
+                    $('.dropdown').removeClass('navFixed'); /* 移除選單固定效果 */
+                }
+            });
+        });
+    </script>
+
+    <div id="placeholder_lines" style="width: 100%; height: 600px;"></div>
+
+    <script src="config.js"></script>
+    <script>
+        var ddfcsvReader = new DDFCsvReader.getDDFCsvReaderObject();
+        Vizabi.Reader.extend("ddf", ddfcsvReader);
+        Vizabi.Reader.extend("ext-csv", CsvReader.csvReaderObject);
+        Vizabi.Reader.extend("excel", ExcelReader.excelReaderObject);
+
+        var viz_lines = Vizabi('BarRankChart', document.getElementById('placeholder_lines'), CONFIG);
+    </script>
+</body>
+
+</html>

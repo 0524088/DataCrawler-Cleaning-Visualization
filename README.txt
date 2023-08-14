@@ -1,0 +1,9 @@
+﻿index.php:首頁
+form.php:清單式查詢
+chartForm.php:個股圖表查詢
+compareChart.php:比較圖表查詢
+bubble.html:全部標的動態氣泡圖
+bar.html:全部標的動態階層圖
+hot_line/line.html:熱門標的動態折線圖
+hot_rank/rank.html:熱門標的動態階層圖
+about.html:關於

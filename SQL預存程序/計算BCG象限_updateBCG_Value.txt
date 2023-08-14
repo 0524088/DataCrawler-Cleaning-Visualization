@@ -1,0 +1,62 @@
+USE [fund]
+GO
+/****** Object:  StoredProcedure [dbo].[updateBCG_Value]    Script Date: 2019/5/31 下午 04:01:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+--計算市佔率之方法
+ALTER proc  [dbo].[updateBCG_Value] as
+declare  @time nvarchar(7)
+declare  @price money=0
+
+declare  @marketShare float=0
+declare  @AVGmarketShare float=0
+declare  @growthRate float=0
+declare  @AVGgrowthRate float=0
+
+declare @subjectName nvarchar(50)
+declare @Quadrant nvarchar(10);
+declare Y cursor
+for select A.time,A.subjectName,A.marketShare,A.growthRate,B.marketShare,B.growthRate
+from fund_schedule_BCGcompute A,BCG_BCG B--table
+where A.time=B.time
+open Y
+FETCH NEXT FROM Y
+into @time,@subjectName,@marketShare,@growthRate,@AVGmarketShare,@AVGgrowthRate
+while (@@fetch_status = 0)
+begin
+	
+	if @marketShare >@AVGmarketShare and @growthRate>@AVGgrowthRate
+	begin
+	select @Quadrant='I(明星)'
+	end 
+	if @marketShare <=@AVGmarketShare and @growthRate>@AVGgrowthRate
+	begin
+	select @Quadrant='II(問號)'
+	end
+	if @marketShare <=@AVGmarketShare and @growthRate<=@AVGgrowthRate
+	begin
+	select @Quadrant='III(瘦狗)'
+	end
+	if @marketShare >@AVGmarketShare and @growthRate<=@AVGgrowthRate
+	begin
+	select @Quadrant='IV(金牛)'
+	end
+	
+
+	update fund_schedule_BCGcompute--table
+	set Quadrant=@Quadrant
+	where time=@time and subjectName=@subjectName
+
+
+
+	FETCH NEXT FROM Y
+into @time,@subjectName,@marketShare,@growthRate,@AVGmarketShare,@AVGgrowthRate
+end
+close Y
+deallocate Y
+
+
+
+

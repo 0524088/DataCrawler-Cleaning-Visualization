@@ -1,0 +1,52 @@
+USE [fund]
+GO
+/****** Object:  StoredProcedure [dbo].[updateGrowthRate]    Script Date: 2019/5/31 下午 03:59:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+--計算成長率之方法
+ALTER proc  [dbo].[updateGrowthRate]as
+declare  @price money=0
+declare  @GrowthRate float=0
+declare  @time nvarchar(10)
+
+declare  @lastMonth money=0
+declare  @thisMonth money=0
+
+
+declare @subjectName nvarchar(50)
+declare Y cursor
+for select time,subjectName,price from fund_schedule_BCGcompute--table
+open Y
+FETCH NEXT FROM Y
+INTO @time,@subjectName,@price
+
+
+while (@@fetch_status = 0)
+begin
+	exec @lastMonth=lastMonthMoney @time,@subjectName
+	exec @thisMonth=thisMonthMoney @time,@subjectName
+
+	IF @lastMonth<>0
+	begin
+		--計算成長率
+		select @GrowthRate=(@thisMonth-@lastMonth)/@lastMonth
+		update fund_schedule_BCGcompute--table
+		set growthRate=@GrowthRate
+		where price=@price and time=@time
+		and subjectName=@subjectName
+	end
+	ELSE
+	begin
+		--第一年無成長率
+		update fund_schedule_BCGcompute--table
+		set growthRate=0
+		where price=@price and time=@time 
+		and subjectName=@subjectName
+	end
+	FETCH NEXT FROM Y
+	INTO @time,@subjectName,@price
+end
+close Y
+deallocate Y

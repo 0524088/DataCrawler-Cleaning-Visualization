@@ -1,0 +1,38 @@
+USE [fund]
+GO
+/****** Object:  StoredProcedure [dbo].[lastMonthMoney]    Script Date: 2019/5/31 下午 03:58:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+--計算去年總金額
+ALTER proc  [dbo].[lastMonthMoney] (@time as char(7),@subjectName nvarchar(50))as
+declare  @price money=0
+declare  @subjectPrice money=0
+declare  @GrowthRate float=0
+declare @fundName nvarchar(50)
+declare  @lastMonth date
+
+
+--取得上個月
+select @lastMonth=dateadd(month,-1,cast(@time+'-01' as date)) 
+--轉回char型別以符合資料表格式
+select @time=cast(@lastMonth as char(7) )
+
+declare X cursor
+for select price from fund_schedule_BCGcompute --table
+where time=@time and subjectName=@subjectName
+open X
+FETCH NEXT FROM X
+INTO @price
+
+while (@@fetch_status = 0)
+begin
+	--加總標的總金額
+	select @subjectPrice=@subjectPrice+@price
+	FETCH NEXT FROM X
+	INTO @price
+end
+close X
+deallocate X
+return @subjectPrice
