@@ -14,6 +14,7 @@
 - Python-BeautifulSoup
 - SQL Server(MSSQL)
 - HTML+CSS
+- PHP 7.4
 - Bootstrap CSS Framework
 - JavaScript+jQuery/Ajax
 - Highcharts.js
