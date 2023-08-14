@@ -28,7 +28,7 @@
 - 熱門標的分析圖
 
 ## 專案影片DEMO展示
-https://www.youtube.com/watch?v=UiK0-f-Ekcg&ab_channel=%E9%9B%BB%E5%AE%B9%E7%88%86%E7%82%B8
+https://www.youtube.com/watch?v=jxuEEPHJDVc&ab_channel=DLD
 
 ## 製作過程與困難點
 由於SITCA的網站資料並不是單純用GET網址的方式去呈現而且有非常多頁的資料要爬，因此一開始沒辦法直接單純用BeautifulSoup套件去抓取資料，後面才發現有Selenium這個套件可以模擬人去操作瀏覽器。
