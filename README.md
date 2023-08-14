@@ -23,6 +23,7 @@
 ## 系統功能
 ![image](https://github.com/0524088/DataCrawler-Cleaning-Visualization/assets/43835584/b62fc590-8690-44cf-bcad-501f1fef41af)
 主要著重於資料的整理、計算及視覺化，結合BCG矩陣的概念製作出基金矩陣圖，整合出不同層面的分析資訊使資料更具可靠性，也讓投資人易於進行分析。
+系統主要提供：
 - 個股&多股圖表查詢
 - 動態圖表查詢
 - BCG矩陣圖分析圖
