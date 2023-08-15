@@ -6,9 +6,9 @@
 
 ## 流程
 主要分為資料蒐集、資料清理以及資料呈現<br>
-*資料蒐集：*使用Python的Selenium和BeautifulSoup套件進行爬蟲然後再存進資料庫。<br>
-*資料清理：*透過SQL預存程序對爬蟲資料進行清理以及格式化，並另外計算分析相對市占率和成長率等資料。<br>
-*資料呈現：*透過WEB來呈現，後端使用PHP配合前端jQuery的Ajax來達到SPA查詢；使用Gapminder Tools工具來進行動態圖表的繪製，並另外使用Highcharts.js套件來呈現靜態資料視覺化
+**資料蒐集：**使用Python的Selenium和BeautifulSoup套件進行爬蟲然後再存進資料庫。<br>
+**資料清理：**透過SQL預存程序對爬蟲資料進行清理以及格式化，並另外計算分析相對市占率和成長率等資料。<br>
+**資料呈現：**透過WEB來呈現，後端使用PHP配合前端jQuery的Ajax來達到SPA查詢；使用Gapminder Tools工具來進行動態圖表的繪製，並另外使用Highcharts.js套件來呈現靜態資料視覺化
 
 ## 使用工具/技術
 - Python-Selenium
