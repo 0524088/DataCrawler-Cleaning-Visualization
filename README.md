@@ -1,4 +1,3 @@
-# Data Crawler&Cleaning&Visualization
 大學專題-透過投信投資組合之動態分析進行投資決策之研究
 
 ## 目的
